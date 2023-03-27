@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { DocumentTextIcon, ClockIcon } from '@heroicons/react/24/solid'
+import { Link } from 'react-router-dom';
 
 const HomeCard = () => {
-
-    const [datas, setDatas] = useState([])
-
-
-    useEffect(() => {
-        fetch('/datas.json')
-            .then(res => res.json())
-            .then(data1 => setDatas(data1))
-    }, [])
-
-    const handelBtn = () => {
-        console.log(datas)
-    }
 
     return (
         <div className='flex items-center justify-center h-96'>
@@ -45,10 +33,23 @@ const HomeCard = () => {
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box bg-slate-100 text-black">
-                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <h3 className="font-bold text-2xl">Topic Test (React)</h3>
+                    <div className='text-left pl-5'>
+                        <p className="font-semibold mt-3">Time allocated for this exam is 10 min</p>
+                        <p className="font-semibold">Color-Scheme for question navigation-panel</p>
+                        <div className='border-2 border-orange-500 rounded-xl p-2 my-2'>
+                            <p>(i) White: You haven't visited the question yet</p>
+                            <p>(ii) Pink: You haven't answered the question</p>
+                            <p>(iii) Green: You have answered the question</p>
+                            <p>(iv) Pink & black: You haven't answered the question, but have marked it for review</p>
+                            <p>(v) Green & black: You have answered the question, but have marked it for review</p>
+                        </div>
+                    </div>
+
                     <div className="modal-action justify-center">
-                        <label htmlFor="my-modal-6" className="btn text-orange-500">Yay!</label>
+                        <Link to='/quizs'>
+                        <label htmlFor="my-modal-6" className="btn text-orange-500">Start!</label>
+                        </Link>
                     </div>
                 </div>
             </div>

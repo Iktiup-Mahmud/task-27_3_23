@@ -1,15 +1,24 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import HomeCard from './components/HomeCard';
+import Home from './components/Home/Home';
+import Quizs from './components/Quizs/Quizs';
 // import datas from '../public/datas.json'
 
 function App() {
-
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />
+    },
+    {
+      path: '/quizs',
+      element: <Quizs />
+    }
+  ])
 
   return (
-    <div className="App bg-white h-screen">
-      <h1 className='text-5xl text-orange-500 py-5'>Quiz</h1>
-      <HomeCard />
-      
+    <div className="App bg-slate-900 h-screen">
+      <RouterProvider router={router} />
     </div>
   );
 }
