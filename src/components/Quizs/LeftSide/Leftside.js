@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-const Leftside = ({ setSelectedQuiz }) => {
+const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, currentIndex }) => {
     const [datas, setDatas] = useState([])
-
+    // const []
 
     useEffect(() => {
         fetch('/datas.json')
@@ -11,9 +11,15 @@ const Leftside = ({ setSelectedQuiz }) => {
             .then(data1 => setDatas(data1.questions))
     }, [])
 
-    // const handelBtn = (a) => {
-    //     console.log(a)
-    // }
+    const handelClick = (data, i) => {
+        // console.log(a)
+        setSelectedQuiz(data)
+        setBgColor('bg-pink-300')
+        if ((currentIndex.findIndex(j => j === i + 1)) === -1) {
+            const newCurrentIndex = [...currentIndex, i + 1]
+            setCurrentIndex(newCurrentIndex)
+        }
+    }
 
     return (
         <div className='mt-4'>
@@ -36,7 +42,10 @@ const Leftside = ({ setSelectedQuiz }) => {
             <div className='grid grid-cols-3 gap-2 mt-5 mx-3'>
                 {
                     datas.map((data, i) => {
-                        return <span onClick={() => setSelectedQuiz(data)} key={i} className='border border-white rounded-xl cursor-pointer'>
+                        return <span onClick={() => {
+                            return handelClick(data, i)
+
+                        }} key={i} className={`${(currentIndex.findIndex(j => j === i + 1)) !== -1 && bgColor} text-black border border-white rounded-xl cursor-pointer`}>
                             {/* <p key={i} className='border border-white flex flex-col'> */}
                             {i + 1}
                             {/* </p> */}
@@ -47,7 +56,7 @@ const Leftside = ({ setSelectedQuiz }) => {
             </div>
 
 
-
+            {/* {console.log(bgColor)}   */}
 
 
         </div>

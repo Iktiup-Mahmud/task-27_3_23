@@ -24,7 +24,7 @@ const HomeCard = () => {
 
 
                     <div className="card-actions justify-center mt-3">
-                        <label htmlFor="my-modal-6" className="btn text-orange-500">Buy Now</label>
+                        <label htmlFor="my-modal-6" className="btn text-orange-500">Start Now!</label>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,9 @@ const Quizs = () => {
 
     const [datas, setDatas] = useState([])
     const [selectedQuiz, setSelectedQuiz] = useState(null)
+    const [correctAnsCount, setCorrectAnsCount] = useState(0)
+    const [bgColor, setBgColor] = useState('bg-slate-400')
+    const [currentIndex, setCurrentIndex] = useState([])
 
     useEffect(() => {
         fetch('/datas.json')
@@ -14,12 +17,17 @@ const Quizs = () => {
             .then(data1 => setDatas(data1))
     }, [])
 
+    // const dataFromIndex = () => {
+    //     console.log(datas.questions[currentIndex])
+    //     console.log(datas)
+    // }
 
+    // dataFromIndex()
     return (
         <div className='grid grid-cols-4 gap-1'>
-            <Leftside setSelectedQuiz={setSelectedQuiz}/>
-            <Center selectedQuiz={selectedQuiz} />
-            <Rightside />
+            <Leftside setSelectedQuiz={setSelectedQuiz} bgColor={bgColor} setBgColor={setBgColor} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+            <Center selectedQuiz={selectedQuiz} setCorrectAns={setCorrectAnsCount} setBgColor={setBgColor} />
+            <Rightside setSelectedQuiz={setSelectedQuiz} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
     );
 };
