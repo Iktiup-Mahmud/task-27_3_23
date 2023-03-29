@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'lamee': '#a3e635'
+        'lamee': '#a3e635',
+        'orange_1': '#f97316'
       }
     },
   },
