@@ -8,7 +8,7 @@ const Rightside = ({ currentIndex, setCurrentIndex }) => {
     }
 
     return (
-        <div className='border border-white'>
+        <div className=''>
             {/* mark div */}
             <div className='border border-white mx-28 my-10 p-3 rounded-xl cursor-pointer hover:bg-slate-200 hover:text-black font-semibold text-lg'>
                 <p>Mark</p>

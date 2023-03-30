@@ -16,7 +16,7 @@ const Center = ({ selectedQuiz, setCorrectAnsCount, setBgColor, currentIndex, se
     }
 
     return (
-        <div className='border-l border-white h-screen col-span-2 pt-4'>
+        <div className='border-x border-white h-screen col-span-2 pt-4'>
             <h1 className='text-orange-500 font-bold text-3xl '>Question</h1>
             <h3 className='text-xl p-3 font-semibold mt-3'>{selectedQuiz?.question.slice(3, -4)}</h3>
             {/* {console.log(selectedQuiz)} */}

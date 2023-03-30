@@ -27,7 +27,7 @@ const Quizs = () => {
     // dataFromIndex()
     return (
         <div className='grid grid-cols-4 gap-1'>
-            <Leftside setSelectedQuiz={setSelectedQuiz} bgColor={bgColor} setBgColor={setBgColor} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPinkArray={setPinkArray} pinkArray={pinkArray} />
+            <Leftside setSelectedQuiz={setSelectedQuiz} bgColor={bgColor} setBgColor={setBgColor} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPinkArray={setPinkArray} pinkArray={pinkArray} limeArray={limeArray} />
             <Center selectedQuiz={selectedQuiz} setCorrectAns={setCorrectAnsCount} setBgColor={setBgColor} setLimeArray={setLimeArray} limeArray={limeArray} />
             <Rightside setSelectedQuiz={setSelectedQuiz} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>

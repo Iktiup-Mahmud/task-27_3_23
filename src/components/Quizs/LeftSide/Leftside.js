@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, currentIndex, setPinkArray, pinkArray }) => {
+const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, currentIndex, setPinkArray, pinkArray, limeArray }) => {
     const [datas, setDatas] = useState([])
-    // const []
+    const [id, setId] = useState(null)
 
     useEffect(() => {
         fetch('/datas.json')
@@ -12,14 +12,28 @@ const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, curre
     }, [])
 
     const handelClick = (data, i) => {
-        // console.log(a)
+        // console.log(data)
         setSelectedQuiz(data)
-        // setBgColor('bg-pink-300')
+        setId(data?.id)
         if ((pinkArray.findIndex(j => j === i )) === -1) {
             const newCurrentIndex = [...pinkArray, i ]
             setPinkArray(newCurrentIndex)
         }
     }
+    
+
+    useEffect(() => {
+        if (limeArray.indexOf(id) !== -1) {
+            console.log(limeArray) 
+            setBgColor('bg-lime-500')
+            console.log(limeArray.indexOf(id !== -1))
+            console.log(bgColor)
+        }
+        else if (pinkArray.indexOf(id !== -1)){
+            // console.log(id)
+            setBgColor('bg-pink-300')
+        }
+    }, [setBgColor, limeArray, id, pinkArray, bgColor])
 
 
     return (
@@ -44,7 +58,10 @@ const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, curre
                 {
                     datas.map((data, i) => {
                         return <span onClick={() => { handelClick(data, i) }} key={i}
-                            className={`${(pinkArray.findIndex(j => j === i)) !== -1 && bgColor} text-white border border-white rounded-xl cursor-pointer`}>
+                            className={`${(pinkArray.findIndex(j => j === i)) !== -1 && bgColor}
+                            ${(limeArray.findIndex(j => j === i)) !== -1}
+                            
+                            text-white border border-white rounded-xl cursor-pointer`}>
                             {/* <p key={i} className='border border-white flex flex-col'> */}
 
                             {i + 1}
@@ -55,7 +72,6 @@ const Leftside = ({ setSelectedQuiz, bgColor, setBgColor, setCurrentIndex, curre
                 }
             </div>
             {/* {console.log(bgColor)}   */}
-
 
         </div>
     );
